@@ -145,7 +145,6 @@ socket.on("disconnect", () => {
 // Callback function to recieve message from Node.JS
 socket.on("drawing", (data) => {
   console.log(data);
-drawMark(data);
   onDrawingEvent(data);
 
 });
@@ -153,15 +152,11 @@ drawMark(data);
 socket.on("history",(history)=>{
 //draw all previous marks made by users
 for (const data of history){
-  drawMark(data);
+  onDrawingEvent(data);
 }
 })
 
-function drawMark(data){
-  noStroke();
-  fill(data.color[0], data.color[1], data.color[2]);
-  circle(data.x, data.y, data.diameter);
-}
+
 
 function windowResized() {
 

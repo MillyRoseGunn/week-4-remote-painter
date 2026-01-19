@@ -31,7 +31,7 @@ io.on("connection", (socket) => {
   socket.on("drawing", (data) => {
 drawingHistory.push(data); //saves incoming drawing events into memory array
 
-if(drawingHistory > MAX_HISTORY){
+if(drawingHistory.length > MAX_HISTORY){
   drawingHistory.shift(); //if over 5000, remove oldest item in the array
 }
 
